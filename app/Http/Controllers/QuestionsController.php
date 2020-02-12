@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Question;
 use com_exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class QuestionsController extends Controller
 {
@@ -15,7 +16,9 @@ class QuestionsController extends Controller
      */
     public function index()
     {
-        return view('questions.index')->with('questions', Question::latest()->paginate(5));
+        //DB::enableQueryLog();
+        return view('questions.index')->with('questions', Question::with('user')->latest()->paginate(5));
+        //dd(DB::getQueryLog());
     }
 
     /**
