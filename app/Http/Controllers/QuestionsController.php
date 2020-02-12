@@ -17,7 +17,7 @@ class QuestionsController extends Controller
     public function index()
     {
         //DB::enableQueryLog();
-        return view('questions.index')->with('questions', Question::with('user')->latest()->paginate(5));
+        return view('questions.index')->with('questions', Question::with('user')->latest()->paginate(3));
         //dd(DB::getQueryLog());
     }
 
