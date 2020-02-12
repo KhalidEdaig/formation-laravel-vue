@@ -6,3 +6,52 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+
+/* .counters {
+    margin-right: 30px;
+    font-size: 14px;
+} */
+
+
+.flex-container {
+    margin: auto;
+    display: flex;
+    background-color: #ef9a10;
+    border-left: 6px solid #ea0936;
+
+
+}
+
+.vote,
+.answer,
+.view {
+    background-color: #ea0936;
+    margin: 10px 30px;
+    padding: 5px;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 0.30rem;
+    width: 100px;
+
+    strong {
+        margin: 0;
+        padding: 0;
+        display: block;
+        font-size: 1em;
+        font-weight: bold;
+    }
+
+    &.unanswered {
+        background-color: $body-bg;
+        color: $red;
+    }
+
+    &.answered {
+        border-left: 6px solid $green;
+    }
+
+    &.answered-accepted {
+        background-color: $green;
+    }
+}

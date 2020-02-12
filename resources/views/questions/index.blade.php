@@ -10,6 +10,8 @@
                     @foreach ($questions as $question)
                    
                     <div class="media">
+                        <div class="d-flex flex-column counters" >       
+                        </div>
                         <div class="media-body">
                            <h3 class="mt-0">
 
@@ -26,6 +28,24 @@
                             <p> {{Str::limit($question->body,200)}}</p>
                         </div>
                         
+                    </div>
+                    <div class="flex-container d-flex justify-content-center rounded">
+                       
+                            <div class="vote">
+                            <strong>{{$question->votes}}</strong>
+                            {{Str::plural('votes',$question->votes)}}
+                            </div>
+                   
+                            <div class="answer {{$question->status}}{{--  unanswered answered   answered-accepted  --}}">
+                                <strong>{{$question->answers}}</strong>
+                                {{Str::plural('answers',$question->answers)}}
+                            </div>
+                       
+                            <div class="view">
+                            <strong>{{$question->views}}</strong>
+                                {{Str::plural('views',$question->views)}} 
+                            </div>    
+                       
                     </div>
                     <hr>
                      @endforeach
