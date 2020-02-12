@@ -10937,3 +10937,13 @@ a.text-dark:focus {
   background-color: #38c172;
 }
 
+.header-question {
+  background-color: #81ecec;
+  border-left: 6px solid #3490dc;
+}
+
+.header-ask-question {
+  background-color: #81ecec;
+  border-left: 6px solid #38c172;
+}
+
