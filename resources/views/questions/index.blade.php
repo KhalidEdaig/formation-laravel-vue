@@ -26,7 +26,16 @@
                                      <a {{-- href="{{ route('questions.show',$question->id)}}" --}} href="{{$question->url}}">{{$question->title }}</a>
                                 </h3>
                                 <div class="ml-auto">
-                                    <a href="{{route('questions.edit',[$question->id])}}" class="btn btn-outline-warning text-primary">Edit Qu</a>
+                                    <div class="d-flex justify-content-center rounded">
+                                        <div class="edit mr-2"><a href="{{route('questions.edit',[$question->id])}}" class="btn btn-outline-success">Edit </a></div>
+                                        <div class="delete">
+                                        <form action="{{route('questions.destroy',[$question->id])}}" method="post" class="form-delete">
+                                            @method('delete')
+                                            @csrf
+                                            <button type="submit" class="btn btn-outline-danger" onclick="return confirm('Are you sure ?')">Delete </button>
+                                        </form>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                            <p class="lead">
