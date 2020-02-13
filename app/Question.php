@@ -13,6 +13,17 @@ class Question extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    //Relationship the Question with answer 
+    public function answers()
+    {
+        return $this->hasMany(Answer::class);
+
+        //$questions->answers->count()
+        //foreach(questions->answers as answer)
+    }
+
+
     public function setTitleAttribute($value)
     {
         $this->attributes['title'] = $value;
@@ -29,7 +40,7 @@ class Question extends Model
 
     public function getStatusAttribute()
     {
-        if ($this->answers > 0) {
+        if ($this->answers_count > 0) {
             if ($this->best_answer_id) {
                 return 'answered-accepted';
             }
