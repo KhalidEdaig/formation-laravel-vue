@@ -27,14 +27,20 @@
                                 </h3>
                                 <div class="ml-auto">
                                     <div class="d-flex justify-content-center rounded">
-                                        <div class="edit mr-2"><a href="{{route('questions.edit',[$question->id])}}" class="btn btn-outline-success">Edit </a></div>
-                                        <div class="delete">
-                                        <form action="{{route('questions.destroy',[$question->id])}}" method="post" class="form-delete">
-                                            @method('delete')
-                                            @csrf
-                                            <button type="submit" class="btn btn-outline-danger" onclick="return confirm('Are you sure ?')">Delete </button>
-                                        </form>
+                                        @can('update', $question) 
+                                        <div class="edit mr-2">
+                                            <a href="{{route('questions.edit',[$question->id])}}" class="btn btn-outline-success">Edit </a>
                                         </div>
+                                        @endcan
+                                        @can('delete', $question)                                         
+                                        <div class="delete">
+                                            <form action="{{route('questions.destroy',[$question->id])}}" method="post" class="form-delete">
+                                                @method('delete')
+                                                @csrf
+                                                <button type="submit" class="btn btn-outline-danger" onclick="return confirm('Are you sure ?')">Delete </button>
+                                            </form> 
+                                        </div>
+                                        @endcan
                                     </div>
                                 </div>
                             </div>

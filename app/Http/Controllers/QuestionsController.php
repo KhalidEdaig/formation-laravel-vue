@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Gate;
 
 class QuestionsController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -66,11 +71,15 @@ class QuestionsController extends Controller
      */
     public function edit(Question $question)
     {
-        if (Gate::denies('update-question', $question)) {
+        /*  if (Gate::denies('update-question', $question)) {
             return view('404');
+        } */
+        if ($this->authorize('update', $question)) {
+            // The current user can update the question...
+            return view('questions.edit')->with('question', $question);
         }
-        // The current user can update the question...
-        return view('questions.edit')->with('question', $question);
+
+        /*  return view('403'); */
 
 
 
@@ -87,8 +96,11 @@ class QuestionsController extends Controller
     public function update(AskQuestionRequest $request, Question $question)
     {
 
-        $question->update($request->only('title', 'body'));
-        return redirect('/questions')->with('success', "  Your question has been updated");
+        if ($this->authorize('update', $question)) {
+            $question->update($request->only('title', 'body'));
+            return redirect('/questions')->with('success', "  Your question has been updated");
+        }
+        /*  return view('403'); */
     }
 
     /**
@@ -99,10 +111,14 @@ class QuestionsController extends Controller
      */
     public function destroy(Question $question)
     {
-        if (Gate::denies('delete-question', $question)) {
+        /* if (Gate::denies('delete-question', $question)) {
             return view('404');
+        } */
+        if ($this->authorize('delete', $question)) {
+            $question->delete();
+            return redirect('/questions')->with('success', "  Your question has been deleted");
         }
-        $question->delete();
-        return redirect('/questions')->with('success', "  Your question has been deleted");
+
+        /*  return view('403'); */
     }
 }

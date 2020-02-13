@@ -14,7 +14,7 @@
                     </div>
                 </div>
                 <div class="card-body ">
-                <img src="{{ asset('images/404.png') }}" alt="Access Denied" style="margin-left: 180px;" >
+                <img src="{{ asset('images/403.png') }}" alt="Access Denied" style="margin-left: 180px;" >
                 </div> 
             </div>
         </div>
