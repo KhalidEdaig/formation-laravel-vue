@@ -20,7 +20,7 @@ class Question extends Model
     }
     public function getUrlAttribute()
     {
-        return route('questions.show', $this->id);
+        return route('questions.show', $this->slug /* $this->id */);
     }
     public function getCreatedDateAttribute()
     {
@@ -31,10 +31,14 @@ class Question extends Model
     {
         if ($this->answers > 0) {
             if ($this->best_answer_id) {
-                return "answered-accepted";
+                return 'answered-accepted';
             }
-            return "answered";
+            return 'answered';
         }
-        return "unanswered";
+        return 'unanswered';
+    }
+    public function getBodyHtmlAttribute()
+    {
+        return \Parsedown::instance()->text($this->body);
     }
 }
