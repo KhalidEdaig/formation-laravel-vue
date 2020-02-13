@@ -61,8 +61,8 @@
                             </div>
                    
                             <div class="answer {{$question->status}}{{--  unanswered answered   answered-accepted  --}}">
-                                <strong>{{$question->answers}}</strong>
-                                {{Str::plural('answers',$question->answers)}}
+                                <strong>{{$question->answers_count}}</strong>
+                                {{Str::plural('answers',$question->answers_count)}}
                             </div>
                        
                             <div class="view">
