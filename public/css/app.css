@@ -10947,3 +10947,8 @@ a.text-dark:focus {
   border-left: 6px solid #38c172;
 }
 
+.header-answers-of-question {
+  background-color: #1abc9c;
+  border-left: 6px solid #ffed4a;
+}
+
