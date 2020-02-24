@@ -57,17 +57,17 @@
                        
                             <div class="vote">
                             <strong>{{$question->votes}}</strong>
-                            {{Str::plural('votes',$question->votes)}}
+                            {{Str::plural('vote',$question->votes)}}
                             </div>
                    
                             <div class="answer {{$question->status}}{{--  unanswered answered   answered-accepted  --}}">
                                 <strong>{{$question->answers_count}}</strong>
-                                {{Str::plural('answers',$question->answers_count)}}
+                                {{Str::plural('answer',$question->answers_count)}}
                             </div>
                        
                             <div class="view">
                             <strong>{{$question->views}}</strong>
-                                {{Str::plural('views',$question->views)}} 
+                                {{Str::plural('view',$question->views)}} 
                             </div>    
                        
                     </div>

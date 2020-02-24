@@ -15,53 +15,53 @@
                 </div>
                 <div class="card-body">
                     {!!$question->body_html!!}
-                    <div class="float-right">
-                        <span class="text-muted">{{'Answered '.$question->created_date}}</span>
-                        <div class="media mt-2">
-                            <a href="{{$question->user->url}}" class="pr-2">
-                                <img src="{{$question->user->avatar}}" alt="">
-                            </a>
-                            <div class="media-body mt-1">
-                            <a href="{{$question->user->url}}">{{$question->user->name}}</a>
-                            </div>
-                        </div>
-                    </div>
-                </div> 
-            </div>
-            <div class="card">
-                <div class="card-header header-answers-of-question">
-                    <div class="d-flex align-items-center ">
-                        <h3>{{$question->answers_count.''.Str::plural(' Answer',$question->answers_count )}} </h3>
-                    </div>
-                </div>
-                @php
-                $number_answer=1;
-                @endphp
-                   @foreach ($question->answers as $answer)
-                   <div class="media-body">
-                        <div class="card-body">
-                            <h4>{{'Answer : '.$number_answer}}</h4>
-                                {!!$answer->body_html!!}
-                            <div class="float-right">
-                                <span class="text-muted">{{'Answered '.$answer->created_date}}</span>
-                                <div class="media mt-2">
-                                    <a href="{{$answer->user->url}}" class="pr-2">
-                                        <img src="{{$answer->user->avatar}}" alt="">
+                    <div class="row">
+                        <div class="col">
+                            <div class="float-left vote-control">
+                               {{--  Start Add vote --}}
+                                <div class="row">
+                                    <div class="col">
+                                    <a title="this question is useful" class="vote-up">
+                                        <i class="fas fa-caret-up fa-3x"></i>
                                     </a>
-                                    <div class="media-body mt-1">
-                                    <a href="{{$answer->user->url}}">{{$answer->user->name}}</a>
+                                    <span class="votes-count">100</span>
+                                    <a title="this question is not useful" class="vote-down off">
+                                        <i class="fas fa-caret-down fa-3x"></i>
+                                    </a>
+                                    </div>
+                                    <div class="col pt-2">
+                                    <a title="Click to make as favorite question (Click again to undo)" class=" vote-star favorite favorited">
+                                        <i class="fas fa-star fa-2x"></i>
+                                    </a>
+                                    <span class="favorites-count">100</span>                              
+                                    </div>
+                                </div>
+                                {{-- End Add vote --}}
+                            </div>
+                            <div class="col">
+                                <div class="float-right">
+                                    <span class="text-muted">{{'Answered '.$question->created_date}}</span>
+                                    <div class="media mt-2">
+                                        <a href="{{$question->user->url}}" class="pr-2">
+                                            <img src="{{$question->user->avatar}}" alt="">
+                                        </a>
+                                        <div class="media-body mt-1">
+                                        <a href="{{$question->user->url}}">{{$question->user->name}}</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <hr>
-                    @php
-                    $number_answer++;
-                    @endphp
-                   @endforeach                
+                    </div> 
+                </div>
             </div>
         </div>
     </div>
+@include('layouts._alert')
+  @include('answers._index',[
+      'answersCount'=>$question->answers_count,
+      'answers'=>$question->answers
+  ])
+  @include('answers._create',['btnText'=>'Response'])  
 </div>
 @endsection

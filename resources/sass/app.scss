@@ -71,3 +71,56 @@
     background-color: #1abc9c;
     border-left: 6px solid $yellow;
 }
+
+.header-writing-answer {
+    background-color: #4cf3dd;
+    border-left: 6px solid $green;
+}
+
+.vote-control {
+    min-width: 300px;
+    margin-top: 20px;
+    text-align: center;
+    color: $gray-700;
+}
+
+span,
+a {
+    display: inline-block;
+
+}
+
+
+
+span {
+    &.votes-count {
+        font-size: 20px;
+        margin: 10px;
+    }
+
+    &.favorites-count {
+        font-size: 12px;
+    }
+}
+
+a {
+    cursor: pointer;
+    color: $gray-600;
+
+    &.off,
+    &.off:hover {
+        color: $gray-500;
+    }
+
+    &.favorite {
+
+        &.favorited,
+        &.favorited:hover {
+            color: $warning;
+        }
+    }
+
+    &.vote-accepted {
+        color: $green;
+    }
+}

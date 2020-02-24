@@ -10952,3 +10952,48 @@ a.text-dark:focus {
   border-left: 6px solid #ffed4a;
 }
 
+.header-writing-answer {
+  background-color: #4cf3dd;
+  border-left: 6px solid #38c172;
+}
+
+.vote-control {
+  min-width: 300px;
+  margin-top: 20px;
+  text-align: center;
+  color: #495057;
+}
+
+span,
+a {
+  display: inline-block;
+}
+
+span.votes-count {
+  font-size: 20px;
+  margin: 10px;
+}
+
+span.favorites-count {
+  font-size: 12px;
+}
+
+a {
+  cursor: pointer;
+  color: #6c757d;
+}
+
+a.off,
+a.off:hover {
+  color: #adb5bd;
+}
+
+a.favorite.favorited,
+a.favorite.favorited:hover {
+  color: #ffed4a;
+}
+
+a.vote-accepted {
+  color: #38c172;
+}
+
