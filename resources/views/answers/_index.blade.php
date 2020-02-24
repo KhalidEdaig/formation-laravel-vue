@@ -37,6 +37,30 @@
                                         {{-- End Add vote --}}
                                     </div>
                                 <div class="col">
+                                    <div class="row">
+                                        <div class="d-flex justify-content-center rounded mt-4">
+                                            <div class="col">
+                                                @can('update', $answer) 
+                                                <div class="edit mr-2">
+                                                    <a href="{{route('questions.answers.edit',[$question->id,$answer->id])}}" class="btn btn-outline-success">Edit </a>
+                                                </div>
+                                                @endcan
+                                            </div>
+                                            <div class="col">
+                                                @can('delete', $answer)                                         
+                                                <div class="delete">
+                                                    <form action="{{route('questions.answers.destroy',[$question->id,$answer->id])}}" method="post" class="form-delete">
+                                                        @method('delete')
+                                                        @csrf
+                                                        <button type="submit" class="btn btn-outline-danger" onclick="return confirm('Are you sure ?')">Delete </button>
+                                                    </form> 
+                                                </div>
+                                                @endcan
+                                            </div>
+                                        </div>
+                                    </div>   
+                                </div>
+                                <div class="col">
                                     <div class="float-right">
                                         <span class="text-muted">{{'Answered '.$answer->created_date}}</span>
                                         <div class="media mt-2">
