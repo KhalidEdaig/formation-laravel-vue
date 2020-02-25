@@ -10902,7 +10902,7 @@ a.text-dark:focus {
   padding: 5px;
   font-size: 16px;
   text-align: center;
-  border-radius: 0.3rem;
+  border-radius: 50%;
   width: 100px;
 }
 
@@ -10921,12 +10921,6 @@ a.text-dark:focus {
 .view.unanswered {
   background-color: #f8fafc;
   color: #f1160e;
-}
-
-.vote.answered,
-.answer.answered,
-.view.answered {
-  border-left: 6px solid #38c172;
 }
 
 .vote.answered-accepted,

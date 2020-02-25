@@ -21,13 +21,27 @@
                                {{--  Start Add vote --}}
                                 <div class="row">
                                     <div class="col">
-                                    <a title="this question is useful" class="vote-up">
+                                    <a title="this question is useful" 
+                                    class="vote-up {{ Auth::guest() ? 'off' :''}}"
+                                    onclick="event.preventDefault(); document.getElementById('up-vote-question-{{ $question->id }}').submit();"                      
+                                    >
                                         <i class="fas fa-caret-up fa-3x"></i>
                                     </a>
-                                    <span class="votes-count">100</span>
-                                    <a title="this question is not useful" class="vote-down off">
+                                    <form action="/questions/{{$question->id}}/vote{{-- {{route('questions.favorite',$question->id)}} --}}" id="up-vote-question-{{ $question->id }}" method="POST" style="display: none">
+                                        @csrf
+                                        <input type="hidden" value="1" name="vote">
+                                    </form>
+                                    <span class="votes-count">{{$question->votes_count}}</span>
+                                    <a title="this question is not useful" 
+                                    class="vote-down {{ Auth::guest() ? 'off' :''}}"
+                                    onclick="event.preventDefault(); document.getElementById('down-vote-question-{{ $question->id }}').submit();"
+                                    >
                                         <i class="fas fa-caret-down fa-3x"></i>
                                     </a>
+                                    <form action="/questions/{{$question->id}}/vote" id="down-vote-question-{{ $question->id }}" method="POST" style="display: none">
+                                        @csrf
+                                        <input type="hidden" value="-1" name="vote">
+                                    </form>
                                     </div>
                                     <div class="col pt-2">
                                     <a title="Click to make as favorite question (Click again to undo)" 

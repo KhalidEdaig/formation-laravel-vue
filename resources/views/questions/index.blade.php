@@ -56,8 +56,8 @@
                     <div class="flex-container d-flex justify-content-center rounded">
                        
                             <div class="vote">
-                            <strong>{{$question->votes}}</strong>
-                            {{Str::plural('vote',$question->votes)}}
+                            <strong>{{$question->votes_count}}</strong>
+                            {{Str::plural('vote',$question->votes_count)}}
                             </div>
                    
                             <div class="answer {{$question->status}}{{--  unanswered answered   answered-accepted  --}}">

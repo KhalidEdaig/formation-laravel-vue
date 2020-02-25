@@ -20,13 +20,27 @@
                                        {{--  Start Add vote --}}
                                         <div class="row">
                                             <div class="col">
-                                            <a title="this question is useful" class="vote-up">
-                                                <i class="fas fa-caret-up fa-3x"></i>
-                                            </a>
-                                            <span class="votes-count">100</span>
-                                            <a title="this question is not useful" class="vote-down off">
-                                                <i class="fas fa-caret-down fa-3x"></i>  
-                                            </a>
+                                                <a title="this answer is useful" 
+                                                class="vote-up {{ Auth::guest() ? 'off' :''}}"
+                                                onclick="event.preventDefault(); document.getElementById('up-vote-answer-{{ $answer->id }}').submit();"                      
+                                                >
+                                                    <i class="fas fa-caret-up fa-3x"></i>
+                                                </a>
+                                                <form action="/answers/{{$answer->id}}/vote{{-- {{route('questions.favorite',$question->id)}} --}}" id="up-vote-answer-{{ $answer->id }}" method="POST" style="display: none">
+                                                    @csrf
+                                                    <input type="hidden" value="1" name="vote">
+                                                </form>
+                                                <span class="votes-count">{{$answer->votes_count}}</span>
+                                                <a title="this answer is not useful" 
+                                                class="vote-down {{ Auth::guest() ? 'off' :''}}"
+                                                onclick="event.preventDefault(); document.getElementById('down-vote-answer-{{ $question->id }}').submit();"
+                                                >
+                                                    <i class="fas fa-caret-down fa-3x"></i>
+                                                </a>
+                                                <form action="/answers/{{$answer->id}}/vote" id="down-vote-answer-{{ $answer->id }}" method="POST" style="display: none">
+                                                    @csrf
+                                                    <input type="hidden" value="-1" name="vote">
+                                                </form>
                                             </div> 
                                             
                                             <div class="col pt-2">

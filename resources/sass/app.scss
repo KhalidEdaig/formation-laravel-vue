@@ -29,7 +29,7 @@
     padding: 5px;
     font-size: 16px;
     text-align: center;
-    border-radius: 0.30rem;
+    border-radius: 50%; //0.30rem;
     width: 100px;
 
     strong {
@@ -46,7 +46,7 @@
     }
 
     &.answered {
-        border-left: 6px solid $green;
+        // border-left: 6px solid $green;
     }
 
     &.answered-accepted {

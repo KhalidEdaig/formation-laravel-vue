@@ -38,3 +38,6 @@ Route::delete(
     'questions/{question}/favorites',
     'FavoriteController@destroy'
 )->name('questions.unfavorite');
+
+Route::post('questions/{question}/vote', 'VoteQuestionController');
+Route::post('answers/{answer}/vote', 'VoteAnswerController');
