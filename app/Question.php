@@ -14,7 +14,7 @@ class Question extends Model
         return $this->belongsTo(User::class);
     }
 
-    //Relationship the Question with answer 
+    //Relationship the Question with answer
     public function answers()
     {
         return $this->hasMany(Answer::class);
@@ -22,7 +22,6 @@ class Question extends Model
         //$questions->answers->count()
         //foreach(questions->answers as answer)
     }
-
 
     public function setTitleAttribute($value)
     {
@@ -51,5 +50,10 @@ class Question extends Model
     public function getBodyHtmlAttribute()
     {
         return \Parsedown::instance()->text($this->body);
+    }
+    public function acceptBestAnswer(Answer $answer)
+    {
+        $this->best_answer_id = $answer->id;
+        $this->save();
     }
 }
