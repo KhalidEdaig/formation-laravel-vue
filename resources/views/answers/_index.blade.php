@@ -25,13 +25,18 @@
                                             </a>
                                             <span class="votes-count">100</span>
                                             <a title="this question is not useful" class="vote-down off">
-                                                <i class="fas fa-caret-down fa-3x"></i>
+                                                <i class="fas fa-caret-down fa-3x"></i>  
                                             </a>
                                             </div>
                                             <div class="col pt-2">
-                                            <a title="Marke this answer as best answer" class="vote-accepted">
+                                            <a title="Marke this answer as best answer" 
+                                            class="{{$answer->status}}
+                                                onclick="event.preventDefault(); document.getElementById('accept-answer- {{ $answer->id }}').submit();">
                                                 <i class="fas fa-check fa-2x"></i>
-                                            </a>                     
+                                            </a> 
+                                            <form action="{{route('answers.accept',$answer->id)}}" id="accept-answer-{{ $answer->id }}" method="POST" style="display: none">
+                                                @csrf
+                                            </form>                    
                                             </div>
                                         </div>
                                         {{-- End Add vote --}}

@@ -10892,14 +10892,12 @@ a.text-dark:focus {
 .flex-container {
   margin: auto;
   display: flex;
-  background-color: #ef9a10;
-  border-left: 6px solid #ea0936;
 }
 
 .vote,
 .answer,
 .view {
-  background-color: #ea0936;
+  background-color: #f1254e;
   margin: 10px 30px;
   padding: 5px;
   font-size: 16px;

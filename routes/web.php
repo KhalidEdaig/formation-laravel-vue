@@ -14,9 +14,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'QuestionsController@index');
 
 Auth::routes();
 
@@ -30,6 +28,6 @@ Route::resource('questions.answers', 'AnswersController')->except([
     'create',
     'show'
 ]);
-/* Route::post('questions/{question}/answers', 'AnswerController@store')->name(
-    'answers.store'
-); */
+Route::post('answers/{answer}/accept', 'AcceptAnswerController')->name(
+    'answers.accept'
+);
