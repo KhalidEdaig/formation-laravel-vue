@@ -30,10 +30,20 @@
                                     </a>
                                     </div>
                                     <div class="col pt-2">
-                                    <a title="Click to make as favorite question (Click again to undo)" class=" vote-star favorite favorited">
+                                    <a title="Click to make as favorite question (Click again to undo)" 
+                                    class=" vote-star favorite 
+                                    {{ Auth::guest() ? 'off' : ($question->is_favorited ? 'favorited' :'')}}"
+                                    onclick="event.preventDefault(); document.getElementById('favorite-question-{{ $question->id }}').submit();" >
+                                
                                         <i class="fas fa-star fa-2x"></i>
                                     </a>
-                                    <span class="favorites-count">100</span>                              
+                                    <form action="/questions/{{$question->id}}/favorites{{-- {{route('questions.favorite',$question->id)}} --}}" id="favorite-question-{{ $question->id }}" method="POST" style="display: none">
+                                        @csrf
+                                        @if ($question->is_favorited)
+                                            @method('DELETE')
+                                        @endif
+                                    </form>
+                                <span class="favorites-count">{{$question->favorites_count}}</span>                              
                                     </div>
                                 </div>
                                 {{-- End Add vote --}}
